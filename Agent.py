@@ -40,11 +40,11 @@ class StageAnalyzerChain(LLMChain):
             '6': "Objection handling: Address any objections that the prospect may have regarding your product/service. Be prepared to provide evidence or testimonials to support your claims.",
             '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits.",
             '8': "Greet the client as the end of the call for taking his time to give out his responses.And then Strictly proceed to step 9.",
-            '9': "Just return 'END' as keyword no other out just the single phrase 'END'." 
+            '9': "Just return 'END' as keyword no other tokens just the single phrase or token 'END'." 
 
-            Only answer with a number between 1 through 7 with a best guess of what stage should the conversation continue with. 
+            Only answer with a number between 1 through 9 with a best guess of what stage should the conversation continue with. 
             The answer needs to be one number only, no words.
-            If there is no conversation history, output 1.
+            If there is no conversation history, output 1 else anything other than 1.
             Do not answer anything else nor add anything to you answer."""
             )
         prompt = PromptTemplate(
@@ -123,7 +123,7 @@ class SalesGPT(Chain):
     
     """ Please refrain from editing these sections. 
         To make modifications tailored to your specific needs, 
-        adjust the content within the Config variable located at line 225. """
+        adjust the content within the Config variable located at line 222. """
 
     salesperson_name: str = "Name"
     salesperson_role: str = "Business Role"
