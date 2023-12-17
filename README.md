@@ -1,14 +1,14 @@
 # Virtual Sales Advisor
 
 > [!NOTE]
-> Sales Agent With Large-Language Model and Twilio API
+> The Sales Agent was generated using a Large-Language Model and integrated with the Twilio API.
 
 Building a dynamic sales agent empowered by a large-language model and Twilio API integration, facilitated through Flask
 
-## Execute/Run a Demo 
+## Execute / Run a Demo 
 1. Signup on Twilio and retrieve your Twilio Account SID along with the Authentication by visiting Twilio [Login](https://www.twilio.com/login).
-2. Purchase a number from Twilio Client that includes a Voice URL. You can refer to this [video tutorial](https://www.youtube.com/watch?v=ArYpgZxoF4U) for guidance.
-3. Generate an OpenAI API Key by visiting [OpenAI's website]("https://openai.com/").
+2. Purchase a number from Twilio Client that includes a Voice URL. You can refer to this [Video Tutorial](https://www.youtube.com/watch?v=ArYpgZxoF4U) for guidance.
+3. Generate an OpenAI API Key by visiting [OpenAI's Website](https://openai.com/).
 4. Retrieve the repository by using the command in the Terminal to clone it onto your local computer.
 
     `
@@ -22,7 +22,7 @@ Building a dynamic sales agent empowered by a large-language model and Twilio AP
     Twilio_no
     openai_api
     `
-6. Install insomnia from this [Link].(https://insomnia.rest/download)
+6. Install insomnia from this [Link](https://insomnia.rest/download).
 7. Install ngrok using the [Link](https://ngrok.com/download) and create a public URL for your localhost port 5000 using the following command in the ngrok CLI
 
     `
@@ -40,6 +40,7 @@ Building a dynamic sales agent empowered by a large-language model and Twilio AP
 9. The phone number specified above will soon receive a call. Answer the call and engage in a conversation with the sales agent.
 10. The file named agentTester.py is primarily designed for testing the Agent exclusively and is not an integral part of the project. It can be removed if necessary.
 11. To modify the operational prerequisites of the Agent, revise all the Conversation Stages and the Dictionary containing the company's information, located at line 222.
+12. To enable integration, develop a frontend and initiate an HTTP request through it based on your requirement to the hosted link using the specified JSON format for functional purposes.
 
 ## Technology
 
