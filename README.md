@@ -12,7 +12,7 @@ Building a dynamic sales agent empowered by a large-language model and Twilio AP
 4. Retrieve the repository by using the command in the Terminal to clone it onto your local computer.
 
     `
-        git clone https://github.com/SaiSandeep-01/Sales_Agent
+        git clone https://github.com/SaiSandeep-01/Virtual_Sales_Advisor
     `
 5. Configure the environment keys in the config.py file.
 
