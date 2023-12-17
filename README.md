@@ -1,7 +1,7 @@
 <center><figcaption>Virtual Sales Advisor</figcaption></center>
 
 
-> Sales Agent With Large-Language Model and Twilio API
+<!-- > Sales Agent With Large-Language Model and Twilio API -->
 
 Building a dynamic sales agent empowered by a large-language model and Twilio API integration, facilitated through Flask
 
@@ -30,13 +30,13 @@ Building a dynamic sales agent empowered by a large-language model and Twilio AP
     `
 8. Launch Insomnia and create a POST request to the PUBLIC URL provided by ngrok. Include a JSON body structured as
 
-    `
+    ```
     {
         "user": "Your_Username",
         "phone": "XXXXXXXX",
         "purpose": "Your_Desired_Purpose"
     }
-    `
+    ```
 9. The phone number specified above will soon receive a call. Answer the call and engage in a conversation with the sales agent.
 
 ## Technology
