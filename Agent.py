@@ -1,6 +1,6 @@
 import os
 # from Keys import openai_api
-# os.environ['OPENAI_API_KEY'] = openai_api
+os.environ['OPENAI_API_KEY'] = os.environ.get("openai_api")
 # Place your OpenAPI key Here!
 
 from langchain import LLMChain, PromptTemplate
@@ -35,13 +35,15 @@ class StageAnalyzerChain(LLMChain):
             ===
 
             Now determine what should be the next immediate conversation stage for the agent in the sales conversation by selecting ony from the following options:
-            '1' : "Introduction: Start the conversation by introducing yourself and your company. Be polite and respectful while keeping the tone of the conversation professional. Your greeting should be welcoming. Always clarify in your greeting the reason why you are contacting the prospect.",
+            '1' : "Introduction: Start the conversation by introducing yourself and your company. Be polite and respectful while keeping the tone of the conversation professional. Your greeting should be welcoming. Always clarify in your greeting the reason why you are contacting the prospect and find out whether he has time to talk if the response is no Strictly process stage 8",
             '2': "Qualification: Qualify the prospect by confirming if they are the right person to talk to regarding your product/service. Ensure that they have the authority to make purchasing decisions.",
             '3': "Value proposition: Briefly explain how your product/service can benefit the prospect. Focus on the unique selling points and value proposition of your product/service that sets it apart from competitors.",
             '4': "Needs analysis: Ask open-ended questions to uncover the prospect's needs and pain points. Listen carefully to their responses and take notes.",
             '5': "Solution presentation: Based on the prospect's needs, present your product/service as the solution that can address their pain points.",
             '6': "Objection handling: Address any objections that the prospect may have regarding your product/service. Be prepared to provide evidence or testimonials to support your claims.",
-            '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits."
+            '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits.",
+            '8': "Greet the client as the end of the call for taking his time to give out his responses.And then Strictly proceed to step 9.",
+            '9': "Just return 'END' as keyword no other out just the single phrase 'END'." 
 
             Only answer with a number between 1 through 7 with a best guess of what stage should the conversation continue with. 
             The answer needs to be one number only, no words.
@@ -111,18 +113,20 @@ class SalesGPT(Chain):
     stage_analyzer_chain: StageAnalyzerChain = Field(...)
     sales_conversation_utterance_chain: SalesConversationChain = Field(...)
     conversation_stage_dict: Dict = {
-        '1' : "Introduction: Start the conversation by introducing yourself and your company. Be polite and respectful while keeping the tone of the conversation professional. Your greeting should be welcoming. Always clarify in your greeting the reason why you are contacting the prospect.",
+        '1' : "Introduction: Start the conversation by introducing yourself and your company. Be polite and respectful while keeping the tone of the conversation professional. Your greeting should be welcoming. Always clarify in your greeting the reason why you are contacting the prospect and find out whether he has time to talk if the response is no Strictly process stage 8",
         '2': "Qualification: Qualify the prospect by confirming if they are the right person to talk to regarding your product/service. Ensure that they have the authority to make purchasing decisions.",
         '3': "Value proposition: Briefly explain how your product/service can benefit the prospect. Focus on the unique selling points and value proposition of your product/service that sets it apart from competitors.",
         '4': "Needs analysis: Ask open-ended questions to uncover the prospect's needs and pain points. Listen carefully to their responses and take notes.",
         '5': "Solution presentation: Based on the prospect's needs, present your product/service as the solution that can address their pain points.",
         '6': "Objection handling: Address any objections that the prospect may have regarding your product/service. Be prepared to provide evidence or testimonials to support your claims.",
-        '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits."
+        '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits.",
+        '8': "Greet the client as the end of the call for taking his time to give out his responses.And then Strictly proceed to step 9.",
+        '9': "Just return 'END' as keyword no other out just the single phrase 'END'." 
         }
     
     """ Please refrain from editing these sections. 
         To make modifications tailored to your specific needs, 
-        adjust the content within the Config variable located at line 218. """
+        adjust the content within the Config variable located at line 225. """
 
     salesperson_name: str = "Name"
     salesperson_role: str = "Business Role"
@@ -204,13 +208,15 @@ class SalesGPT(Chain):
         )
     
 conversation_stages = {
-'1' : "Introduction: Start the conversation by introducing yourself and your company. Be polite and respectful while keeping the tone of the conversation professional. Your greeting should be welcoming. Always clarify in your greeting the reason why you are contacting the prospect.Also keep it Very Short",
-'2': "Qualification: Qualify the prospect by confirming if they are the right person to talk to regarding your product/service. Ensure that they have the authority to make purchasing decisions.",
-'3': "Value proposition: Briefly explain how your product/service can benefit the prospect. Focus on the unique selling points and value proposition of your product/service that sets it apart from competitors.",
-'4': "Needs analysis: Ask open-ended questions to uncover the prospect's needs and pain points. Listen carefully to their responses and take notes.",
-'5': "Solution presentation: Based on the prospect's needs, present your product/service as the solution that can address their pain points.",
-'6': "Objection handling: Address any objections that the prospect may have regarding your product/service. Be prepared to provide evidence or testimonials to support your claims.",
-'7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits."
+    '1' : "Introduction: Start the conversation by introducing yourself and your company. Be polite and respectful while keeping the tone of the conversation professional. Your greeting should be welcoming. Always clarify in your greeting the reason why you are contacting the prospect and find out whether he has time to talk if the response is no Strictly process stage 8",
+    '2': "Qualification: Qualify the prospect by confirming if they are the right person to talk to regarding your product/service. Ensure that they have the authority to make purchasing decisions.",
+    '3': "Value proposition: Briefly explain how your product/service can benefit the prospect. Focus on the unique selling points and value proposition of your product/service that sets it apart from competitors.",
+    '4': "Needs analysis: Ask open-ended questions to uncover the prospect's needs and pain points. Listen carefully to their responses and take notes.",
+    '5': "Solution presentation: Based on the prospect's needs, present your product/service as the solution that can address their pain points.",
+    '6': "Objection handling: Address any objections that the prospect may have regarding your product/service. Be prepared to provide evidence or testimonials to support your claims.",
+    '7': "Close: Ask for the sale by proposing a next step. This could be a demo, a trial or a meeting with decision-makers. Ensure to summarize what has been discussed and reiterate the benefits.",
+    '8': "Greet the client as the end of the call for taking his time to give out his responses.And then Strictly proceed to step 9.",
+    '9': "Just return 'END' as keyword no other out just the single phrase 'END'."
 }
 
 # Feel free to customize the following sections.
@@ -242,9 +248,9 @@ sales_agent.seed_agent()
 #         print("\n")
 
 
-def Agent( Input , clear_history ):
+def Agent(Input):
 
-    if(clear_history):
+    if(Input == 'clear_convo'):
         sales_agent.conversation_history=[]
         sales_agent.current_conversation_stage = 1
 
