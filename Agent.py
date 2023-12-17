@@ -1,7 +1,5 @@
-import os
-# from Keys import openai_api
+from config import os
 os.environ['OPENAI_API_KEY'] = os.environ.get("openai_api")
-# Place your OpenAPI key Here!
 
 from langchain import LLMChain, PromptTemplate
 from langchain.chat_models import ChatOpenAI
@@ -9,7 +7,6 @@ from langchain.chains.base import Chain
 from pydantic import BaseModel, Field
 from langchain.llms import BaseLLM
 from typing import Dict, List, Any
-from time import sleep
 
 llm = ChatOpenAI(temperature=0.6)
 

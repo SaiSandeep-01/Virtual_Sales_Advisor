@@ -43,3 +43,5 @@ Pipfile.lock
 # Miscellaneous
 *.swp
 .DS_Store
+
+agentTester.py

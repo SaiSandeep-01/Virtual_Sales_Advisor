@@ -5,11 +5,9 @@ from twilio.rest import Client
 from flask_cors import CORS
 from Agent import Agent as AI_Agent
 import urllib.request
-import requests
 import openai
 import random
-import os
-import threading
+from config import os
 
 app = Flask(__name__)
 CORS(app)
@@ -122,4 +120,4 @@ def Ongoing():
     return str(response)
 
 if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0')
+    app.run(debug=False,host='localhost',port=5000)
