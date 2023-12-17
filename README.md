@@ -1,7 +1,7 @@
-<center><figcaption>Virtual Sales Advisor</figcaption></center>
+# Virtual Sales Advisor
 
-
-<!-- > Sales Agent With Large-Language Model and Twilio API -->
+> [!NOTE]
+> Sales Agent With Large-Language Model and Twilio API
 
 Building a dynamic sales agent empowered by a large-language model and Twilio API integration, facilitated through Flask
 
@@ -38,6 +38,8 @@ Building a dynamic sales agent empowered by a large-language model and Twilio AP
     }
     ```
 9. The phone number specified above will soon receive a call. Answer the call and engage in a conversation with the sales agent.
+10. The file named agentTester.py is primarily designed for testing the Agent exclusively and is not an integral part of the project. It can be removed if necessary.
+11. To modify the operational prerequisites of the Agent, revise all the Conversation Stages and the Dictionary containing the company's information, located at line 222.
 
 ## Technology
 
